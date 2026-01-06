@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>MSU Smart Life Plus - Prototype</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f4f8;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+.phone {
+  width: 360px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+h2 {
+  text-align: center;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+button.gray {
+  background: #9ca3af;
+}
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+}
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+<!-- Screen 1 -->
+<div class="screen active" id="home">
+  <h2>MSU Smart Life Plus</h2>
+  <button class="gray">Safe Transit</button>
+  <button class="gray">Smart Class</button>
+  <button onclick="go('fix')">Fix & Clean</button>
+</div>
+
+<!-- Screen 2 -->
+<div class="screen" id="fix">
+  <h2>Fix & Clean</h2>
+  <label>ถ่ายรูปปัญหา</label>
+  <input type="file">
+  <label>สถานที่</label>
+  <select>
+    <option>โรงอาหาร</option>
+    <option>ห้องน้ำ</option>
+    <option>ห้องเรียน</option>
+  </select>
+  <label>รายละเอียด</label>
+  <textarea placeholder="เช่น พื้นสกปรก ก๊อกน้ำเสีย"></textarea>
+  <button onclick="go('success')">ส่งเรื่อง</button>
+</div>
+
+<!-- Screen 3 -->
+<div class="screen" id="success">
+  <h2>ส่งเรื่องสำเร็จ</h2>
+  <p style="text-align:center;">ระบบได้รับแจ้งปัญหาเรียบร้อยแล้ว</p>
+  <button onclick="go('home')">กลับหน้าแรก</button>
+</div>
+
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
