@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>MSU Smart Life Plus - Prototype</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f2f4f8;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+}
+.phone {
+  width: 360px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+h2 {
+  text-align: center;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+button.gray {
+  background: #9ca3af;
+}
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+}
+.map {
+  background: #e5e7eb;
+  height: 160px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="phone">
+
+<!-- HOME -->
+<div class="screen active" id="home">
+  <h2>MSU Smart Life Plus</h2>
+  <button onclick="go('ev')">Safe Transit (EV)</button>
+  <button onclick="go('class')">Smart Class</button>
+  <button onclick="go('fix')">Fix & Clean</button>
+</div>
+
+<!-- SAFE TRANSIT -->
+<div class="screen" id="ev">
+  <h2>Safe Transit</h2>
+  <div class="map">แผนที่มหาวิทยาลัย<br>● รถ EV กำลังวิ่ง</div>
+  <p style="text-align:center;">รถ EV จะมาถึงใน 3 นาที</p>
+  <button onclick="go('home')">กลับหน้าแรก</button>
+</div>
+
+<!-- SMART CLASS -->
+<div class="screen" id="class">
+  <h2>Smart Class</h2>
+  <label>รายวิชา</label>
+  <select>
+    <option>CS101 Programming</option>
+    <option>IT203 Database</option>
+  </select>
+  <label>ให้คะแนนการสอน</label>
+  <select>
+    <option>ดีมาก</option>
+    <option>ดี</option>
+    <option>พอใช้</option>
+  </select>
+  <label>ความคิดเห็นเพิ่มเติม</label>
+  <textarea placeholder="เช่น อยากให้สอนช้าลง"></textarea>
+  <button onclick="go('success')">ส่ง Feedback</button>
+</div>
+
+<!-- FIX & CLEAN -->
+<div class="screen" id="fix">
+  <h2>Fix & Clean</h2>
+  <label>ถ่ายรูปปัญหา</label>
+  <input type="file">
+  <label>สถานที่</label>
+  <select>
+    <option>โรงอาหาร</option>
+    <option>ห้องน้ำ</option>
+    <option>ห้องเรียน</option>
+  </select>
+  <label>รายละเอียด</label>
+  <textarea placeholder="เช่น พื้นสกปรก ก๊อกน้ำเสีย"></textarea>
+  <button onclick="go('success')">ส่งเรื่อง</button>
+</div>
+
+<!-- SUCCESS -->
+<div class="screen" id="success">
+  <h2>ดำเนินการสำเร็จ</h2>
+  <p style="text-align:center;">
+    ระบบได้รับข้อมูลเรียบร้อยแล้ว<br>
+    และจะดำเนินการโดยอัตโนมัติ
+  </p>
+  <button onclick="go('home')">กลับหน้าแรก</button>
+</div>
+
+</div>
+
+<script>
+function go(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
